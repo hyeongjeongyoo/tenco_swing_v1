@@ -35,9 +35,9 @@ public class FlowLayoutEx2 extends JFrame {
 
 		// 반복문 활용
 		for (int i = 0; i < buttons.length; i++) {
-			buttons[i] = new JButton("[button" + (i+1) + "]");
+			buttons[i] = new JButton("[button" + (i + 1) + "]");
 		}
-		
+
 	}
 
 	// 컴포넌트들을 배치하는 기능
@@ -58,11 +58,11 @@ public class FlowLayoutEx2 extends JFrame {
 //		super.add(buttons[3]);
 //		super.add(buttons[4]);
 //		super.add(buttons[5]);
-		
-		for(int i = 0; i < buttons.length; i++) {
+
+		for (int i = 0; i < buttons.length; i++) {
 			super.add(buttons[i]);
 		}
-		
+
 		// 컴포넌트들을 붙이다.
 		// 반복문 활용
 //		super.add(button1);

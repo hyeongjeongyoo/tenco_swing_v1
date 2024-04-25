@@ -30,8 +30,6 @@ public class FlowLayoutEx extends JFrame{
 		
 	}
 	
-
-
 	// 멤버 변수를 초기화하는 기능 (값을 넣다)
 	public void initData() {
 		button1 = new JButton("button1");
@@ -72,7 +70,7 @@ public class FlowLayoutEx extends JFrame{
 		new FlowLayoutEx();	// <- 익명 클래스
 		// 다시 접근해서 사용할 일 없으면 new 라고 선언만 해도 된다.
 		
-
 	}// end of main
+	
 	
 }
