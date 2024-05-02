@@ -1,4 +1,4 @@
-package Bubble.test.ex03;
+package Bubble.test.ex04;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -17,9 +17,9 @@ public class BubbleFrame extends JFrame {
 		initData();
 		setInitLayout();
 		addEvenListener();
-		
+
 		// Player 백그라운드 서비스 시작
-		
+
 		new Thread(new BackgroundPlayerService(player)).start();
 	}
 
@@ -55,36 +55,51 @@ public class BubbleFrame extends JFrame {
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_LEFT:
 					// 구현
-					player.left();
+
+					// 왼쪽으로 방향키 누르고 있다면
+					// key 이벤트가 계속 <- <- <- <- <-
+					// 왼쪽이 상태가 아니라면
+					// 왼쪽 벽에 충돌한 게 아니라면
+					if (!player.isLeft() && !player.isLeftWallCrash()) {
+						player.left();
+					}
 					break;
 				case KeyEvent.VK_RIGHT:
-					player.right();
+					if (!player.isRight() && !player.isRightWallCrash()) {
+						player.right();
+					}
 					break;
 				case KeyEvent.VK_UP:
 					player.up();
 					break;
+				default:
+					break;
 				}
 			}// end of keyPressed
-			
+
 			@Override
 			public void keyReleased(KeyEvent e) {
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_LEFT:
 					// 구현
+					// 왼쪽으로 가는 상태 멈춤
 					player.setLeft(false);
 					break;
 				case KeyEvent.VK_RIGHT:
+					// 오른쪽으로 가는 상태 멈춤
 					player.setRight(false);
+					break;
+				default:
 					break;
 				}
 			} // end of KeyReleased
-			
+
 		});
 	}
-	
+
 	// 코드 테스트
 	public static void main(String[] args) {
 		new BubbleFrame();
 	}// end of main
-	
+
 }
