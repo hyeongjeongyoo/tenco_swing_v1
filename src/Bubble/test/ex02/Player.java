@@ -18,11 +18,12 @@ public class Player extends JLabel implements Moveable {
 	// 플레이어 속도 상태
 	private final int SPEED = 4;
 	private final int JUMPSPEED = 2;
-	
+
 	// setter
 	public void setLeft(boolean left) {
 		this.left = left;
 	}
+
 	public void setRight(boolean right) {
 		this.right = right;
 	}
@@ -105,21 +106,51 @@ public class Player extends JLabel implements Moveable {
 	@Override
 	public void up() {
 		System.out.println("점프");
-		
+		up = true;
+
 		new Thread(new Runnable() {
-			
+
 			@Override
 			public void run() {
-				
+				for (int i = 0; i < 130 / JUMPSPEED; i++) {
+					y = y - JUMPSPEED;
+					setLocation(x, y);
+
+					try {
+						Thread.sleep(5);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				// 객체의 상태값을 잘 조절해야 한다.
+				up = false;
+				down();
 			}
-		}
-		
-		
+		}).start();
+
 	}
 
 	@Override
 	public void down() {
 		System.out.println("다운");
-	}
+		down = true;
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				for (int i = 0; i < 130 / JUMPSPEED; i++) {
+					y = y + JUMPSPEED;
+					setLocation(x, y);
+					try {
+						Thread.sleep(3);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}).start();
+		// 상태값 처리를 확실히 하자.
+		down = false;
+	}// end of down
 
 }
