@@ -1,4 +1,4 @@
-package Bubble.test.ex06;
+package Bubble.test.ex08;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -40,8 +40,6 @@ public class BackgroundPlayerService implements Runnable {
 			// 바닥인 경우 -> 0 0 255 (바닥이라고 판단 가능)
 			int bottomColorLeft = image.getRGB(player.getX() + 20, player.getY() + 50 + 5);
 			int bottomColorRight = image.getRGB(player.getX() + 50 + 10, player.getY() + 50 + 5);
-			
-			// System.out.println(bottomColorLeft);	플레이어 좌표 확인
 
 			// 하얀색 -> int 값이 -1
 			if (bottomColorLeft + bottomColorRight != -2) {
